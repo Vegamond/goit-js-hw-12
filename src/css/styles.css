@@ -1,14 +1,7 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-/* Common styles */
 @import url("./reset.css");
 @import url("./base.css");
 
-/* Sections style */
+/* Форма */
 .form {
   display: flex;
   justify-content: center;
@@ -40,26 +33,25 @@
   font-family: "Montserrat";
   letter-spacing: 4%;
   line-height: 24px;
+  cursor: pointer;
 }
 
 .search-input:hover {
-  outline: none;
   border: 1px solid black;
 }
-
 .search-input:focus {
   border: 1px solid #4e75ff;
 }
-
 .search-button:hover {
   background-color: #6c8cff;
 }
 
+/* Галерея */
 .gallery {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  margin: 0 auto;
+  margin: 0 auto 32px;
   width: 1128px;
 }
 
@@ -80,7 +72,6 @@
   width: 360px;
   height: 48px;
   background-color: #fff;
-
   display: flex;
   flex-direction: row;
   gap: 29px;
@@ -103,19 +94,64 @@
   font-family: "Montserrat";
   font-weight: 400;
 }
+
+/* Контейнер Load More + лоадер */
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 44px;
+}
+
+/* Кнопка Load More */
+.load-more-btn {
+  background-color: #4e75ff;
+  border: none;
+  border-radius: 8px;
+  width: 125px;
+  height: 40px;
+  color: #fff;
+  font-family: "Montserrat";
+  letter-spacing: 4%;
+  line-height: 24px;
+  display: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.load-more-btn:hover {
+  background-color: #6c8cff;
+}
+
+/* Лоадер */
 .loader {
-  display: none; /* спочатку прихований */
+  display: none;
   width: 48px;
   height: 48px;
-  border: 5px solid #808080;
+  border: 5px solid gray;
   border-bottom-color: transparent;
   border-radius: 50%;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+  z-index: 2;
+  margin-top: 12px;
+}
+
+/* Центр лоадера для першого завантаження */
+.loader.is-visible.initial {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: block;
+}
+
+/* Лоадер під кнопкою */
+.loader.is-visible.load-more {
+  position: static;
+  display: block;
 }
 
 @keyframes rotation {
@@ -125,8 +161,4 @@
   100% {
     transform: rotate(360deg);
   }
-}
-
-.loader.is-visible {
-  display: block;
 }
