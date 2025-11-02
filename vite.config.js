@@ -1,6 +1,5 @@
 export default defineConfig(({ command }) => {
   return {
-    // 👇 ДОДАЙ ОЦЕ
     base: '/goit-js-hw-12/',
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
